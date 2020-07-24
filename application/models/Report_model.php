@@ -72,5 +72,28 @@ class Report_model extends CI_Model {
         $this->report_desc = $post["report_desc"];
         $this->report_date = $post["report_date"];
         $this->report_file = $this->_uploadFile();
+
+        return $this->db->insert($this->_table, $this);
     }
+
+    public function update() {
+        $post = $this->input->post();
+        $this->report_id = $post["report_id"];
+        $this->report_nik = $post["report_nik"];
+        $this->report_name = $post["report_name"];
+        $this->report_rt = $post["report_rt"];
+        $this->report_rw = $post["report_rw"];
+        $this->report_title = $post["report_title"];
+        $this->report_desc = $post["report_desc"];
+        $this->report_date = $post["report_date"];
+
+        if (!empty($_FILES['report_file']['name'])) {
+            $this->report_file = $this->_uploadFile();
+        } else {
+            $this->report_file = $this->_oldFile();
+        }
+
+        return $this->db->update($this->_table, $this, array('report_id' => $post['report_id']));
+    }
+
 }
