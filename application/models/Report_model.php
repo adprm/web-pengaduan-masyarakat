@@ -76,6 +76,11 @@ class Report_model extends CI_Model {
         return $this->db->insert($this->_table, $this);
     }
 
+    public function delete($id) {
+        $this->_deleteFile($id);
+        return $this->db->delete($this->_table, array('report_id' => $id));
+    }
+
     public function update() {
         $post = $this->input->post();
         $this->report_id = $post["report_id"];
