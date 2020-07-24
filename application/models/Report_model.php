@@ -96,4 +96,20 @@ class Report_model extends CI_Model {
         return $this->db->update($this->_table, $this, array('report_id' => $post['report_id']));
     }
 
+    public function _uploadFile() {
+        $config['upload_path'] = './upload/report';
+        $config['allowed_types'] = 'jpg|jpeg|png|pdf|doc|docx|zip|rar';
+        $config['file_name'] = $this->report_id;
+        $config['overwrite'] = true;
+        $config['max_size'] = 3000;
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('report_file')) {
+            return $this->upload->data('file_name');
+        }
+
+        return 'default.jpg';
+    }
+
 }
