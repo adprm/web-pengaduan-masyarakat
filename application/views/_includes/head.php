@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Pengaduan Masyarakat</title>
+<title><?php echo SITE_NAME ?></title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="<?php echo base_url('assets/img/favicon.ico') ?>" />
 <!-- Font Awesome icons (free version)-->
