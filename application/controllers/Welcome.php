@@ -38,5 +38,7 @@ class Welcome extends CI_Controller {
 			$validation->save();
 			$this->session->set_flashdata('info', 'Data successfully reported');
 		}
+
+		$this->load->view('_inludes/form_report');
 	}
 }
