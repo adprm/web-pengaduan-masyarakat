@@ -117,4 +117,13 @@ class Report_model extends CI_Model {
         return 'default.jpg';
     }
 
+    public function _deleteFile($id) {
+        $report = $this->getById($id);
+
+        if ($report->report_file != "default.jpg") {
+            $file_name = explode(".", $report->report_file)[0];
+            return array_map('unlink', glob(FCPATH."/upload/report/$file_name.*"));
+        }
+    }
+
 }
