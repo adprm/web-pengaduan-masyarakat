@@ -126,4 +126,8 @@ class Report_model extends CI_Model {
         }
     }
 
+    public function getTotalReport() {
+        return $this->db->get('reports')->num_rows();
+    }
+
 }
