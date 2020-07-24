@@ -21,7 +21,7 @@ class Welcome extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model("report_model");
+		$this->load->model('report_model');
 		$this->load->library('form_validation');
 	}
 
@@ -35,10 +35,10 @@ class Welcome extends CI_Controller {
 		$validation->set_rules($report->rules());
 
 		if ($validation->run()) {
-			$validation->save();
-			$this->session->set_flashdata('info', 'Data successfully reported');
+			$report->save();
+			$this->session->set_flashdata('warning', 'Data successfully reported');
 		}
 
-		$this->load->view('_inludes/form_report');
+		redirect(base_url());
 	}
 }
