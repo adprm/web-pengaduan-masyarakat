@@ -1,6 +1,6 @@
 <div class="container">
-    <h2 class="text-center mt-0"><?php echo TITLE_REPORT ?></h2>
-    <hr class="divider my-4 bg-primary" />
+    <h2 class="text-center mt-0" data-aos="fade-up" data-aos-duration="1000"><?php echo TITLE_REPORT ?></h2>
+    <hr class="divider my-4 bg-primary" data-aos="fade-up" data-aos-duration="1000" />
     <div class="container report" data-aos="fade-up" data-aos-duration="1000">
         <form action="<?php echo site_url('welcome/add') ?>" method="post" enctype="multipart/form-data" data-aos="fade-UP">
             <div class="form-row pt-4">
