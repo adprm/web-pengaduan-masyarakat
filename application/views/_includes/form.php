@@ -70,6 +70,7 @@
             </div>
 		            </div>
         <input class="btn btn-warning mb-4" type="submit" name="btn" value="Laporkan!" data-aos="fade-up" data-aos-duration="1000" />
+        <input class="btn btn-danger mb-4" type="reset" value="Batalkan" data-aos="fade-up" data-aos-duration="1000" />
     </form>
 </div>
 
