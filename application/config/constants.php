@@ -91,3 +91,8 @@ define('SITE_NAME', 'Pengaduan Masyarakat');
 define('CAPT_HEADER', 'Menuju Lingkungan Yang Lebih Baik');
 define('DESC_HEADER', 'Situs Web pengaduan Masyarakat. Laporkan sesuatu yang membuat keresehan pada lingkungan Warga Desa.');
 define('BTN_HEADER', 'LAPORKAN!');
+
+// form
+define('TITLE_REPORT', 'Isi Formulir Laporan');
+define('DATE_REPORT', 'Pilih Tanggal Kejadian *');
+define('FILE_REPORT', 'Lampiran (Opsional)');
