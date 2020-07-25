@@ -13,11 +13,7 @@
     <?php $this->load->view("_includes/header.php") ?>
     <!-- form report-->
     <section class="page-section" id="reports">
-        <div class="container">
-            <h2 class="text-center mt-0">Isi Formulir Laporan</h2>
-            <hr class="divider my-4 bg-primary" />
-            <?php $this->load->view("_includes/form.php") ?>
-        </div>
+        <?php $this->load->view("_includes/form.php") ?>
     </section>
     <!-- Contact-->
     <section class="page-section bg-info" id="contact">
