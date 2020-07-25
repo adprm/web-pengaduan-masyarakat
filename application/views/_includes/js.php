@@ -6,3 +6,5 @@
 <script src="<?php echo base_url("js/jquery.magnific-popup.min.js") ?>"></script>
 <!-- Core theme JS-->
 <script src="<?php echo base_url("js/scripts.js") ?>"></script>
+<!-- aos -->
+<script src="<?php echo base_url("js/aos.js") ?>"></script>
