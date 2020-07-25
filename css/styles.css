@@ -1,4 +1,9 @@
 @charset "UTF-8";
+
+@import url("../css/animate.css");
+@import url("../css/aos.css");
+@import url("../css/magnific-popup.min.css");
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
