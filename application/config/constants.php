@@ -86,3 +86,8 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 // create webname
 define('SITE_NAME', 'Pengaduan Masyarakat');
+
+// header
+define('CAPT_HEADER', 'Menuju Lingkungan Yang Lebih Baik');
+define('DESC_HEADER', 'Situs Web pengaduan Masyarakat. Laporkan sesuatu yang membuat keresehan pada lingkungan Warga Desa.');
+define('BTN_HEADER', 'LAPORKAN!');
