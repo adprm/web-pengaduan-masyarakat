@@ -36,7 +36,7 @@ class Welcome extends CI_Controller {
 
 		if ($validation->run()) {
 			$report->save();
-			$this->session->set_flashdata('warning', 'Data successfully reported');
+			$this->session->set_flashdata('warning', 'Data Berhasil Dilaporkan');
 		}
 
 		redirect(base_url());
