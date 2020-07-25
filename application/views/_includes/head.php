@@ -14,4 +14,6 @@ rel="stylesheet" type="text/css" />
 <!-- Third party plugin CSS-->
 <link rel="stylesheet" href=<?php echo base_url("css/magnific-popup.min.css") ?>
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href=<?php echo base_url("css/styles.css") ?> rel="stylesheet" />
+<link href="<?php echo base_url("css/styles.css") ?>" rel="stylesheet" />
+<!-- aos -->
+<link rel="stylesheet" href="<?php echo base_url("css/aos.css") ?>">
