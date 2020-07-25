@@ -96,3 +96,10 @@ define('BTN_HEADER', 'LAPORKAN!');
 define('TITLE_REPORT', 'Isi Formulir Laporan');
 define('DATE_REPORT', 'Pilih Tanggal Kejadian *');
 define('FILE_REPORT', 'Lampiran (Opsional)');
+
+// contact
+define('TITLE_CONTACT', 'Hubungi Kami');
+define('CAPT_TITLE', 'Kami siap melayani Masyarakat 24 Jam, Jaga keamanan dan ketertiban
+lingkungan Masyarakat.');
+define('NUMBER_PHONE', '08558535877');
+define('GMAIL', 'aditiyaprmn00@gmail.com');
