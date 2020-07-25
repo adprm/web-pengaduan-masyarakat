@@ -31,7 +31,8 @@
     <?php $this->load->view("_includes/js.php") ?>
   </body>
     <script>
-		$('.toast').toast('show');
+        $('.toast').toast('show');
+        AOS.init();
 	</script>
 </body>
 
