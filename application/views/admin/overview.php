@@ -23,35 +23,30 @@
 		<?php //$this->load->view("admin/_partials/breadcrumb.php") ?>
 
 		<!-- Icon Cards-->
-		<div class="row">
-			<div class="col-xl-3 col-sm-6 mb-3">
-				<div class="card text-white bg-info o-hidden h-100">
-					<div class="card-body">
-						<div class="card-body-icon">
-							<i class="fas fa-fw fa-bullhorn"></i>
-						</div>
-						<div class="mr-5">Information Data</div>
-					</div>
-					<a class="card-footer text-white clearfix small z-1" href="#">
-						<span class="float-left">View Details</span>
-						<span class="float-right">
-						<i class="fas fa-angle-right"></i>
-						</span>
-					</a>
-				</div>
-			</div>
+		<div class="row pt-5">
+			<div class="col-xl-4 col-sm-4 mb-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="<?php echo base_url('assets/report.jpg') ?>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Data Laporan</p>
+                        <a href="#" class="btn btn-primary">View Details <i class="fas fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-sm-8 mb-3">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-chart-area"></i>
+                        Visitor Stats</div>
+                        <div class="card-body">
+                            <canvas id="myAreaChart" width="100%" height="35"></canvas>
+                        </div>
+                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                </div>
+		    </div>
 		</div>
 
 		<!-- Area Chart Example-->
-		<div class="card mb-3">
-			<div class="card-header">
-			<i class="fas fa-chart-area"></i>
-			Visitor Stats</div>
-			<div class="card-body">
-			<canvas id="myAreaChart" width="100%" height="30"></canvas>
-			</div>
-			<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-		</div>
 
 		</div>
 		<!-- /.container-fluid -->
