@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<ul class="sidebar navbar-nav pt-2">
+<ul class="sidebar navbar-nav bg-dark pt-2">
     <li class="nav-item <?php echo $this->uri->segment(2) == '' ? 'active': '' ?>"> <!-- Mengecek segmen URL aktif atau tidak -->
         <a class="nav-link" href="<?php echo site_url('admin') ?>"><i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
@@ -38,9 +38,3 @@
         <span>Events</span></a>
     </li>
 </ul>
-
-<style>
-.sidebar {
-    background-color: #480048;
-}
-</style>

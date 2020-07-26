@@ -37,6 +37,6 @@
 
 <style>
 .navbar {
-    background-color: #300030;
+    background-color: #2e2e2e;
 }
 </style>
