@@ -350,7 +350,7 @@ footer.sticky-footer {
   bottom: 0;
   width: calc(100% - 90px);
   height: 80px;
-  background-color: #300030;
+  background-color: #2e2e2e
 }
 
 footer.sticky-footer .copyright {
