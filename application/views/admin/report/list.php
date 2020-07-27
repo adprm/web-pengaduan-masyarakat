@@ -27,7 +27,7 @@ function deleteConfirm(url){
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/learnings/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+						Daftar Data Laporan
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
@@ -42,29 +42,31 @@ function deleteConfirm(url){
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($learning as $learning): ?>
+									<?php foreach ($reports as $report): ?>
 									<tr>
                                         <!-- NIK -->
 										<td width="150">
-											<?php echo $learning->learning_title ?>
+											<?php echo $report->report_nik ?>
 										</td>
                                         <!-- nama -->
                                         <td width="150">
-											<?php echo $learning->learning_title ?>
+											<?php echo $report->report_name ?>
 										</td>
                                         <!-- judul -->
                                         <td width="150">
-											<?php echo $learning->learning_title ?>
+											<?php echo $report->report_title ?>
 										</td>
                                         <!-- Tanggal -->
                                         <td width="150">
-											<?php echo $learning->learning_title ?>
+											<?php echo $report->report_date ?>
 										</td>
                                         <!-- event -->
 										<td width="250">
-											<a href="<?php echo site_url('admin/learnings/edit/'.$learning->learning_id) ?>"
+                                            <a href="<?php echo site_url('admin/reports/detail/'.$report->report_id) ?>"
+											 class="btn btn-small"><i class="fas fa-edit"></i> Detail</a>
+											<a href="<?php echo site_url('admin/reports/edit/'.$report->report_id) ?>"
 											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-											<a onclick="deleteConfirm('<?php echo site_url('admin/learnings/delete/'.$learning->learning_id) ?>')"
+											<a onclick="deleteConfirm('<?php echo site_url('admin/reports/delete/'.$report->report_id) ?>')"
 											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Delete</a>
 										</td>
 									</tr>
