@@ -11,7 +11,7 @@ class Report_model extends CI_Model {
     public $report_title;
     public $report_desc;
     public $report_date;
-    public $report_file;
+    public $report_file = "default.jpg";
 
     public function rules() {
         return [
