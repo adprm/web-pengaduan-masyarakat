@@ -39,4 +39,13 @@ class Reports extends CI_Controller {
             redirect(site_url('admin/reports'));
         }
     }
+
+    public function detail($id = null) {
+        $report = $this->report_model;
+
+        $data['report'] = $report->getById($id);
+        if (!$data['report']) show_404();
+
+        $this->load->view("admin/report/detail", $data);
+    }
 }
