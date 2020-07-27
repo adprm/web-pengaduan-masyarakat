@@ -62,12 +62,12 @@ function deleteConfirm(url){
 										</td>
                                         <!-- event -->
 										<td width="250">
-                                            <a href="<?php echo site_url('admin/reports/detail/'.$report->report_id) ?>"
-											 class="btn btn-small"><i class="fas fa-edit"></i> Detail</a>
 											<a href="<?php echo site_url('admin/reports/edit/'.$report->report_id) ?>"
 											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
 											<a onclick="deleteConfirm('<?php echo site_url('admin/reports/delete/'.$report->report_id) ?>')"
 											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Delete</a>
+                                            <a href="<?php echo site_url('admin/reports/detail/'.$report->report_id) ?>"
+											class="btn btn-small text-success"><i class="fas fa-info-circle"></i> Detail</a>
 										</td>
 									</tr>
 									<?php endforeach; ?>
