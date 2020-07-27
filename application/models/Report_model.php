@@ -95,7 +95,7 @@ class Report_model extends CI_Model {
         if (!empty($_FILES['report_file']['name'])) {
             $this->report_file = $this->_uploadFile();
         } else {
-            $this->report_file = $this->_oldFile();
+            $this->report_file = $post['old_file'];
         }
 
         return $this->db->update($this->_table, $this, array('report_id' => $post['report_id']));
