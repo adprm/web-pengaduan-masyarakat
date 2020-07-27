@@ -77,7 +77,7 @@
                             <!-- file -->
                             <div class="form-group">
                                 <label for="report_file">Lampiran <label>
-                                <?php echo "<a href='".base_url('upload/report/'.$report->report_file) ?>'>Cek lampiran</a>
+                                <?php echo "<a class='btn btn-info' href='".base_url('upload/report/'.$report->report_file) ?>'>Cek lampiran</a>
                             </div>
 						</form>
 					</div>
