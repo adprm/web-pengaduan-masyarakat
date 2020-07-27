@@ -32,4 +32,11 @@ class Reports extends CI_Controller {
         $this->load->view("admin/report/edit_form", $data);
     }
 
+    public function delete($id = null) {
+        if (!isset($id)) show_404();
+
+        if ($this->report_model->delete($id)) {
+            redirect(site_url('admin/reports'));
+        }
+    }
 }
