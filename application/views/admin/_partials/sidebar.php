@@ -7,6 +7,6 @@
     </li>
     <li class="nav-item pt-2 <?php echo $this->uri->segment(2) == 'reports' ? 'active': '' ?>">
         <a class="nav-link" href="<?php echo site_url('admin/reports') ?>"><i class="fab fa-teamspeak"></i></i>
-        <span>Reports</span></a>
+        <span>Laporan</span></a>
     </li>
 </ul>
