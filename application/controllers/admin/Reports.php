@@ -19,7 +19,7 @@ class Reports extends CI_Controller {
 
         $report = $this->report_model;
         $validation = $this->form_validation;
-        $validation->ser_rules($report->rules());
+        $validation->set_rules($report->rules());
 
         if ($validation->run()) {
             $report->update();
