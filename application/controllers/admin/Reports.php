@@ -48,4 +48,10 @@ class Reports extends CI_Controller {
 
         $this->load->view("admin/report/detail", $data);
     }
+
+    public function file(){
+        $name = $this->uri->segment(3);
+        $data = file_get_contents("../upload/report/".$report->report_file);
+        force_download($name, $data);
+    }
 }
