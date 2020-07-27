@@ -31,4 +31,5 @@ class Reports extends CI_Controller {
 
         $this->load->view("admin/report/edit_form", $data);
     }
+    
 }
