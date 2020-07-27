@@ -90,7 +90,7 @@
                             <div class="form-group">
 								<label for="report_date">Tanggal *</label>
 								<input class="form-control <?php echo form_error('report_date') ? 'is-invalid':'' ?>"
-								 type="date" name="report_date" min="0" placeholder="Tanggal" value="<?php echo $career->report_date ?>" />
+								 type="date" name="report_date" min="0" placeholder="Tanggal" value="<?php echo $report->report_date ?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('report_date') ?>
 								</div>
