@@ -77,13 +77,9 @@
                             <!-- file -->
                             <div class="form-group">
                                 <label for="report_file">Lampiran <label>
-                                <img src="<?php echo base_url('upload/report/'.$report->report_file) ?>" width="64" />
+                                <?php echo "<a href='".base_url('upload/report/'.$report->report_file) ?>'>Cek lampiran</a>
                             </div>
 						</form>
-					</div>
-
-					<div class="card-footer small text-muted">
-					 required fields
 					</div>
 				</div>
 				<!-- /.container-fluid -->
