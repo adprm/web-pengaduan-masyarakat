@@ -8,4 +8,9 @@ class Reports extends CI_Controller {
         $this->load->model('report_model');
         $this->load->library('form_validation');
     }
+
+    public function index() {
+        $data['reports'] = $this->report_model->getAll();
+        $this->load->view("admin/report/list", $data);
+    }
 }
