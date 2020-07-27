@@ -53,5 +53,7 @@ class Reports extends CI_Controller {
         $name = $this->uri->segment(3);
         $data = file_get_contents("../upload/report/".$report->report_file);
         force_download($name, $data);
+
+        if (!$data) show_404();
     }
 }
