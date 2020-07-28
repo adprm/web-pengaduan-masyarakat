@@ -23,7 +23,7 @@
 		<?php //$this->load->view("admin/_partials/breadcrumb.php") ?>
 
 		<!-- Icon Cards-->
-		<div class="row pt-5">
+		<div class="row">
 			<div class="col-xl-4 col-sm-4 mb-3">
                 <div class="card" style="width: 18rem;">
                     <img src="<?php echo base_url('assets/report.jpg') ?>" class="card-img-top" alt="...">
