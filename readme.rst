@@ -1,4 +1,35 @@
 ###################
+Public Complaints Website
+###################
+This website is created using the CodeIgniter version 3 framework both in
+terms of Backend and Frontend and uses MySQL DBMS.
+
+*******************
+Features
+*******************
+- Frontend : - Add report data
+- Backend : - Display total data
+            - Update data
+            - Delete data
+            - Display details
+
+*******************
+How to use
+*******************
+- Import web_pengaduan_masyarakat.sql db into the database
+- URL Frontend localhost:8080/PengaduanMasyarakat
+- URL Dashboard Admin localhost:8080/PengaduanMasyarakat/index.php/admin
+
+*******************
+Technology used
+*******************
+- Bootstrap4
+- jQuery
+- Chart JS
+- CodeIgniter versi 3
+- MySQL
+
+###################
 What is CodeIgniter
 ###################
 
