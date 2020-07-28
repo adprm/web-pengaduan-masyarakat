@@ -7,11 +7,14 @@ terms of Backend and Frontend and uses MySQL DBMS.
 *******************
 Features
 *******************
-- Frontend : - Add report data
-- Backend : - Display total data
-            - Update data
-            - Delete data
-            - Display details
+
+- Frontend  :   
+                - Add report data
+- Backend   :   
+                - Display total data
+                - Update data
+                - Delete data
+                - Display details
 
 *******************
 How to use
