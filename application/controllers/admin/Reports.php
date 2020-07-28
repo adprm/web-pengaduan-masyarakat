@@ -41,6 +41,8 @@ class Reports extends CI_Controller {
     }
 
     public function detail($id = null) {
+        if (!isset($id)) redirect('admin/reports');
+        
         $report = $this->report_model;
 
         $data['report'] = $report->getById($id);
