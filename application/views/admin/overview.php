@@ -28,7 +28,7 @@
                 <div class="card" style="width: 18rem;">
                     <img src="<?php echo base_url('assets/report.jpg') ?>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">Data Laporan</p>
+                        <p class="card-text"><?php echo $totalReport ?> Data Laporan</p>
                         <a href="#" class="btn btn-primary">View Details <i class="fas fa-angle-right"></i></a>
                     </div>
                 </div>
