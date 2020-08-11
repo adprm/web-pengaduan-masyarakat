@@ -19,6 +19,7 @@ Features
 *******************
 How to use
 *******************
+- Make new database with name web_pengaduan_masyarakat
 - Import web_pengaduan_masyarakat.sql db into the database
 - URL Frontend localhost:8080/PengaduanMasyarakat
 - URL Dashboard Admin localhost:8080/PengaduanMasyarakat/index.php/admin
