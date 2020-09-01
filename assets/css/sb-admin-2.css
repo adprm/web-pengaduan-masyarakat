@@ -12055,7 +12055,7 @@ a:focus {
 }
 
 .bg-register-image {
-	background: url("../img/login.jpg");
+	background: url("../img/registration.jpg");
 	background-position: center;
 	background-size: cover;
 }
