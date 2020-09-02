@@ -29,11 +29,8 @@ class Auth extends CI_Controller {
 
         // jika user ada
         if ($user) {
-
             // jika user nya aktif
             if ($user['is_active'] == 1) {
-
-
                 // cek passwordnya
                 if (password_verify($password, $user['password'])) {
                     $data = [
@@ -53,8 +50,7 @@ class Auth extends CI_Controller {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 Email ini belum teraktivasi!</div>');
                 redirect('auth');
-            }
-            
+            }   
         } else {
             // tidak ada user dengan email itu
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
