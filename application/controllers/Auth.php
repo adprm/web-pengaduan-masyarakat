@@ -31,8 +31,8 @@ class Auth extends CI_Controller {
             $this->load->view('templates/auth_footer');
         } else {
             $data = [
-                'name' => $this->input->post('name'),
-                'email' => $this->input->post('email'),
+                'name' => htmlspecialchars($this->input->post('name', true)),
+                'email' => htmlspecialchars($this->input->post('email', true)),
                 'image' => 'default.jpg',
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'role_id' => 2,
@@ -41,6 +41,8 @@ class Auth extends CI_Controller {
             ];
 
             $this->db->insert('user', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Selamat! Akun Anda berhasil di buat. Silahkan login!</div>');
             redirect('auth');
         }
     }
