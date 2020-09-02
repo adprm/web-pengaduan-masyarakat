@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends CI_Controller {
 
+    // login
     public function index()
     {
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
@@ -13,9 +14,21 @@ class Auth extends CI_Controller {
             $this->load->view('templates/auth_header', $data);
             $this->load->view('auth/login', $data);
             $this->load->view('templates/auth_footer');
+        } else {
+            // validasi sukses
+            $this->_login();
         }
     }
 
+    private function _login()
+    {
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+    }
+
+    // registrasi
     public function registration()
     {
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
