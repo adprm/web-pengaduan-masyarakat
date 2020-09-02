@@ -26,6 +26,15 @@ class Auth extends CI_Controller {
         $password = $this->input->post('password');
 
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+        if ($user) {
+            // usernya ada
+        } else {
+            // tidak ada user dengan email itu
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Email tidak terdaftar!</div>');
+            redirect('auth');
+        }
     }
 
     // registrasi
