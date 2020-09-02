@@ -5,11 +5,15 @@ class Auth extends CI_Controller {
 
     public function index()
     {
-        $data['title'] = 'Halaman Masuk';
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'required|trim');
 
-        $this->load->view('templates/auth_header', $data);
-        $this->load->view('auth/login', $data);
-        $this->load->view('templates/auth_footer');
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Halaman Masuk';
+            $this->load->view('templates/auth_header', $data);
+            $this->load->view('auth/login', $data);
+            $this->load->view('templates/auth_footer');
+        }
     }
 
     public function registration()
