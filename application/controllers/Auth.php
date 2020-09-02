@@ -27,8 +27,34 @@ class Auth extends CI_Controller {
 
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
 
+        // jika user ada
         if ($user) {
-            // usernya ada
+
+            // jika user nya aktif
+            if ($user['is_active'] == 1) {
+
+
+                // cek passwordnya
+                if (password_verify($password, $user['password'])) {
+                    $data = [
+                        'email' => $user['email'],
+                        'role_id' => $user['role_id']
+                    ];
+                    $this->session->set_userdata($data);
+                    redirect('user');
+                }else{
+                    // jika gagal
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Password salah!</div>');
+                    redirect('auth');
+                }
+            } else {
+                // tidak aktif
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Email ini belum teraktivasi!</div>');
+                redirect('auth');
+            }
+            
         } else {
             // tidak ada user dengan email itu
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
