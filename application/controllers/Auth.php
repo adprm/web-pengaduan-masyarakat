@@ -20,6 +20,7 @@ class Auth extends CI_Controller {
         }
     }
 
+    // valid login sukses
     private function _login()
     {
         $email = $this->input->post('email');
@@ -100,13 +101,14 @@ class Auth extends CI_Controller {
         }
     }
 
+    // logout
     public function logout()
     {
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Anda sudah keluar!</div>');
+        Anda berhasil keluar!</div>');
         redirect('auth');
     }
 
