@@ -60,7 +60,7 @@
         <li class="nav-item">
             <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
             <i class="fas fa-fw fa-sign-out-alt"></i>
-            <span>Logout</span></a>
+            <span>Keluar</span></a>
         </li>
 
         <!-- Divider -->
