@@ -22,7 +22,9 @@ class Menu extends CI_Controller {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['menu'] = $this->db->get('user_menu')->result_array();
 
-        $this->form_validation->set_rules('menu', 'Menu', 'required');
+        $this->form_validation->set_rules('menu', 'Menu', 'required', [
+            'required' => 'Nama menu tidak boleh kosong!'
+        ]);
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/admin_header', $data);
@@ -40,7 +42,9 @@ class Menu extends CI_Controller {
 
     public function editMenu($id = null)
     {   
-        $this->form_validation->set_rules('menu', 'Menu', 'required');
+        $this->form_validation->set_rules('menu', 'Menu', 'required', [
+            'required' => 'Nama menu tidak boleh kosong!'
+        ]);
         
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Menu Manajemen';
@@ -96,10 +100,18 @@ class Menu extends CI_Controller {
         $this->load->model('Menu_model', 'menu');
         $data['submenu'] = $this->menu->getSubMenu();
 
-        $this->form_validation->set_rules('title', 'Submenu', 'required');
-        $this->form_validation->set_rules('menu_id', 'Menu', 'required');
-        $this->form_validation->set_rules('url', 'Url', 'required');
-        $this->form_validation->set_rules('icon', 'Icon', 'required');
+        $this->form_validation->set_rules('title', 'Submenu', 'required', [
+            'required' => 'Submenu tidak boleh kosong!'
+        ]);
+        $this->form_validation->set_rules('menu_id', 'Menu', 'required', [
+            'required' => 'Menu harus di pilih!'
+        ]);
+        $this->form_validation->set_rules('url', 'Url', 'required', [
+            'required' => 'Url tidak boleh kosong!'
+        ]);
+        $this->form_validation->set_rules('icon', 'Ikon', 'required', [
+            'required' => 'Ikon tidak boleh kosong!'
+        ]);
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/admin_header', $data);
