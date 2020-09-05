@@ -16,7 +16,7 @@
         <?= validation_errors(); ?>
     </div>
     <?php endif; ?>
-    
+
     <?= $this->session->flashdata('message'); ?>
 
     <div class="card shadow mb-4">
@@ -48,8 +48,8 @@
                                 <td><?= $sm['icon']; ?></td>
                                 <td><?= $sm['is_active']; ?></td>
                                 <td>
-                                    <a class="badge badge-success" href="<?= site_url('menu/editSubmenu/'.$sm['id']); ?>">Ubah</a>
-                                    <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?= site_url('menu/deleteSubmenu/'.$sm['id']); ?>')">Hapus</a>
+                                    <a class="badge badge-success" href="<?= site_url('menu/editSubMenu/'.$sm['id']); ?>">Ubah</a>
+                                    <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?= site_url('menu/deleteSubMenu/'.$sm['id']); ?>')">Hapus</a>
                                 </td>
                             </tr>
                         <?php $index++; ?>
