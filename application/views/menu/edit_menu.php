@@ -8,20 +8,20 @@
         <?= $this->session->flashdata('message'); ?>
     </div>
 
-    <div class="card shadow mb-4">
+    <div class="card col-lg-7 shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
+            <h6 class="m-0 font-weight-bold text-primary"><a href="<?= base_url('menu') ?>"><i class="fas fa-arrow-left"></i> Kembali</a></h6>
         </div>
         <div class="card-body">
             <form action="" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="<?= $menu['id']; ?>" />
                     <!-- edit title -->
                 	<div class="form-group">
-                		<label for="menu">Name menu</label>
-                		<input class="form-control" type="text" name="menu" placeholder="Name menu" value="<?= $menu['menu'] ?>" />
+                		<label for="menu">Nama Menu</label>
+                		<input class="form-control" type="text" name="menu" placeholder="Nama menu" value="<?= $menu['menu'] ?>" />
                 	</div>
                 <!-- btn -->
-                <input class="btn btn-success" type="submit" name="btn" value="Update" />
+                <input class="btn btn-success" type="submit" name="btn" value="Ubah" />
             </form>
         </div>
     </div>
