@@ -135,4 +135,51 @@ class Menu extends CI_Controller {
         }
     }
 
+    public function editSubMenu($id = null)
+    {
+        $this->form_validation->set_rules('title', 'Submenu', 'required', [
+            'required' => 'Submenu tidak boleh kosong!'
+        ]);
+        $this->form_validation->set_rules('menu_id', 'Menu', 'required', [
+            'required' => 'Menu harus di pilih!'
+        ]);
+        $this->form_validation->set_rules('url', 'Url', 'required', [
+            'required' => 'Url tidak boleh kosong!'
+        ]);
+        $this->form_validation->set_rules('icon', 'Ikon', 'required', [
+            'required' => 'Ikon tidak boleh kosong!'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $this->load->model('Menu_model', 'menu');
+            $data['title'] = 'Submenu Manajemen';
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['menu'] = $this->db->get('user_menu')->result_array();
+            $data['submenu'] = $this->menu->getSubMenu();
+            $data['submenu'] = $this->db->get_where('user_sub_menu', ['id' => $id])->row_array();
+    
+            $this->load->view('templates/admin_header', $data);
+            $this->load->view('templates/admin_sidebar');
+            $this->load->view('templates/admin_topbar', $data);
+            $this->load->view('menu/edit_submenu', $data);
+            $this->load->view('templates/admin_footer');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Gagal mengubah data submenu!</div>');
+        } else {
+            $data = [
+                'id' => $this->input->post('id'),
+                'title' => $this->input->post('title'),
+                'menu_id' => $this->input->post('menu_id'),
+                'url' => $this->input->post('url'),
+                'icon' => $this->input->post('icon'),
+                'is_active' => $this->input->post('is_active')
+            ];
+            
+            $this->db->update('user_sub_menu', $data, ['id' => $data['id']]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Berhasil mengubah data submenu!</div>');
+            redirect('menu/submenu');
+        }
+    }
+
 }
