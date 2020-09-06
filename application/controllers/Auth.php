@@ -153,7 +153,7 @@ class Auth extends CI_Controller {
 
         if ($type == 'verify') {
             $this->email->subject('Verifikasi Akun');
-            $this->email->message('Klik alamat ini untuk verifikasi akun : <a href="' . base_url() .'auth/verify?email=' . $this->input->post('email') . '&token=' . $token .'">Aktifkan</a>');
+            $this->email->message('Klik alamat ini untuk verifikasi akun : <a href="' . base_url() .'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) .'">Aktifkan</a>');
         }
 
         if ($this->email->send()) {
