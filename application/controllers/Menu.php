@@ -65,10 +65,12 @@ class Menu extends CI_Controller {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
             Gagal mengubah menu!</div>');
         } else {
-            $post = $this->input->post();
-            $this->id = $post['id'];
-            $this->menu = $post['menu'];
-            $this->db->update('user_menu', $this, ['id' => $post['id']]);
+            $data = [
+                'id' => $this->input->post('id'),
+                'menu' => $this->input->post('menu')
+            ];
+
+            $this->db->update('user_menu', $data, ['id' => $id]);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Berhasil mengubah menu!</div>');
             redirect('menu');
