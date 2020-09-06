@@ -154,6 +154,9 @@ class Auth extends CI_Controller {
         if ($type == 'verify') {
             $this->email->subject('Verifikasi Akun');
             $this->email->message('Klik alamat ini untuk verifikasi akun : <a href="' . base_url() .'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) .'">Aktifkan</a>');
+        } else if ($type == 'forgot') {
+            $this->email->subject('Buat ulang kata sandi');
+            $this->email->message('Klik alamat ini untuk membuat ulang kata sandi Anda : <a href="' . base_url() .'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) .'">Buat ulang kata sandi</a>');
         }
 
         if ($this->email->send()) {
@@ -229,6 +232,114 @@ class Auth extends CI_Controller {
     public function blocked()
     {
         $this->load->view('auth/blocked');
+    }
+
+    public function forgotPassword()
+    {
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
+            'required' => 'Email haru diisi!',
+            'valid_email' => 'Email tidak valid!'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Lupa Kata Sandi';
+            $this->load->view('templates/auth_header', $data);
+            $this->load->view('auth/forgot-password', $data);
+            $this->load->view('templates/auth_footer');
+        } else {
+            $email = $this->input->post('email');
+            $user = $this->db->get_where('user', ['email' => $email, 'is_active' => 1])->row_array();
+
+            if ($user) {
+                // jika ada user buat token
+                $token = base64_encode(random_bytes(32));
+                $user_token = [
+                    'email' => $email,
+                    'token' => $token,
+                    'date_created' => time()
+                ];
+
+                $this->db->insert('user_token', $user_token);
+                $this->_sendEmail($token, 'forgot');
+                
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                Silahkan cek email Anda untuk membuat ulang kata sandi!</div>');
+                redirect('auth/forgotPassword');
+            } else {
+                // email tidak terdaftar
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Email tidak terdaftar atau belum teraktivasi!</div>');
+                redirect('auth/forgotPassword');
+            }
+        }
+    }
+
+    // reset password
+    public function resetpassword()
+    {
+        $email = $this->input->get('email');
+        $token = $this->input->get('token');
+
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+        if ($user) {
+            // jika ada email
+            $user_token = $this->db->get_where('user_token', ['token' => $token])->row_array();
+            
+            if ($user_token) {
+                // jika token valid
+                $this->session->set_userdata('reset_email', $email);
+                $this->changePassword();
+            } else {
+                // jika token tidak valid
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Buat ulang password gagal! Token tidak valid</div>');
+                redirect('auth');
+            }
+
+        } else {
+            // jika email tidak ada
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Buat ulang password gagal! Email tidak terdaftar</div>');
+            redirect('auth');
+        }
+    }
+
+    // change password
+    public function changePassword()
+    {
+        if (!$this->session->userdata('reset_email')) {
+            redirect('auth');
+        }
+        $this->form_validation->set_rules('password1', 'Kata sandi baru', 'required|trim|min_length[5]|matches[password2]', [
+            'required' => 'Isi kata sandi baru!',
+            'min_length' => 'Kata sandi terlalu pendek!',
+            'matches' => 'Kata sandi tidak sama!'
+        ]);
+        $this->form_validation->set_rules('password2', 'Konfirmasi kata sandi baru', 'required|trim|min_length[5]|matches[password1]', [
+            'required' => 'Isi kata sandi baru!',
+            'min_length' => 'Kata sandi terlalu pendek!',
+            'matches' => 'Kata sandi tidak sama!' 
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Ubah Kata Sandi';
+            $this->load->view('templates/auth_header', $data);
+            $this->load->view('auth/change-password', $data);
+            $this->load->view('templates/auth_footer');
+        } else {
+            $password = password_hash($this->input->post('password1'), PASSWORD_DEFAULT);
+            $email = $this->session->userdata('reset_email');
+
+            $this->db->set('password', $password);
+            $this->db->where('email', $email);
+            $this->db->update('user');
+
+            $this->session->unset_userdata('reset_email');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Kata sandi berhasil diubah! Silahkan login.</div>');
+            redirect('auth');
+        }
     }
 
 }
