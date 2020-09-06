@@ -6,6 +6,10 @@ class Auth extends CI_Controller {
     // login
     public function index()
     {
+        if ($this->session->userdata('email')) {
+            redirect('user');
+        }
+
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
             'required' => 'Email tidak boleh kosong!',
             'valid_email' => 'Email tidak valid!'
@@ -73,6 +77,10 @@ class Auth extends CI_Controller {
     // registrasi
     public function registration()
     {
+        if ($this->session->userdata('email')) {
+            redirect('user');
+        }
+        
         $this->form_validation->set_rules('name', 'Name', 'required|trim', [
             'required' => 'Nama tidak boleh kosong!'
         ]);
