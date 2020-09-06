@@ -4,6 +4,10 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
+    <div class="col-md-4">
+        <?= $this->session->flashdata('message'); ?>
+    </div>
+
     <!-- card profile -->
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
