@@ -33,6 +33,31 @@ class Admin extends CI_Controller {
         $this->load->view('admin/role');
         $this->load->view('templates/admin_footer');
     }
+
+    public function addRole()
+    {
+        $this->form_validation->set_rules('role', 'Wewenang', 'required', [
+            'required' => 'Nama wewenang tidak boleh kosong!'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Hak Akses';
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['role'] = $this->db->get('user_role')->result_array();
+            
+            $this->load->view('templates/admin_header', $data);
+            $this->load->view('templates/admin_sidebar');
+            $this->load->view('templates/admin_topbar', $data);
+            $this->load->view('admin/role');
+            $this->load->view('templates/admin_footer');
+            redirect('admin/role');
+        } else {
+            $this->db->insert('user_role', ['role' => $this->input->post('role')]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Wewenang baru telah ditambahkan!</div>');
+            redirect('admin/role');
+        }
+    }
     
     public function roleaccess($role_id)
     {
