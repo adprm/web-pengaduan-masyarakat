@@ -86,6 +86,14 @@ class Admin extends CI_Controller {
             redirect('admin/role');
         }
     }
+
+    public function deleteRole($id = null)
+    {
+        $this->db->delete('user_role', ['id' => $id]);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Wewenaang berhasil dihapus!</div>');
+        redirect('admin/role');
+    }
     
     public function roleaccess($role_id)
     {
