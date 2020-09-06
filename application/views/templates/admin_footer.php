@@ -55,7 +55,15 @@
   <!-- Page level custom scripts -->
   <script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
 
+
 <script>
+// sustom upload file
+$('.custom-file-input').on('change', function() {
+    let fileName = $(this).val().split('\\').pop();
+    $(this).next('.custom-file-label').addClass("selected").html(fileName);
+});
+
+// ajax role
 $('.form-check-input').on('click', function() {
     const menuId = $(this).data('menu');
     const roleId = $(this).data('role');
