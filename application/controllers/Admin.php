@@ -23,7 +23,7 @@ class Admin extends CI_Controller {
 
     public function role()
     {
-        $data['title'] = 'Hak Akses';
+        $data['title'] = 'Wewenang Akses';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['role'] = $this->db->get('user_role')->result_array();
         
