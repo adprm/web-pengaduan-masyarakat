@@ -75,4 +75,58 @@ class User extends CI_Controller {
         
     }
 
+    public function changepassword()
+    {
+        $data['title'] = 'Ubah Kata Sandi';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->form_validation->set_rules('current_password', 'Kata sandi lama', 'required|trim', [
+            'required' => 'Kata sandi lama harus di isi!'
+        ]);
+        $this->form_validation->set_rules('new_password1', 'Kata sandi baru', 'required|trim|min_length[5]|matches[new_password2]', [
+            'required' => 'Isi kata sandi baru!',
+            'min_length' => 'Kata sandi terlalu pendek!',
+            'matches' => 'Kata sandi tidak sama!'
+        ]);
+        $this->form_validation->set_rules('new_password2', 'Konfirmasi kata sandi baru', 'required|trim|min_length[5]|matches[new_password1]', [
+            'required' => 'Isi kata sandi baru!',
+            'min_length' => 'Kata sandi terlalu pendek!',
+            'matches' => 'Kata sandi tidak sama!' 
+        ]);
+        
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/admin_header', $data);
+            $this->load->view('templates/admin_sidebar');
+            $this->load->view('templates/admin_topbar', $data);
+            $this->load->view('user/changepassword', $data);
+            $this->load->view('templates/admin_footer');
+        } else {
+            $current_password = $this->input->post('current_password');
+            $new_password = $this->input->post('new_password1');
+
+            if (!password_verify($current_password, $data['user']['password'])) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Kata sandi salah!</div>');
+                redirect('user/changepassword');
+            } else {
+                if ($current_password == $new_password) {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Kata sandi baru tidak boleh sama dengan kata sandi lama!</div>');
+                    redirect('user/changepassword');
+                } else {
+                    // password ok!
+                    $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+
+                    $this->db->set('password', $password_hash);
+                    $this->db->where('email', $this->session->userdata('email'));
+                    $this->db->update('user');
+                    
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                    Kata sandi berhasil diubah!</div>');
+                    redirect('user/changepassword');
+                }
+            }
+        }
+    }
+
 }
