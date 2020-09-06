@@ -25,7 +25,7 @@
                         <thead>
                                 <tr>
                                 <th>#</th>
-                                <th>Akses</th>
+                                <th>Wewenang</th>
                                 <th>Aksi</th>
                                 </tr>
                         </thead>
