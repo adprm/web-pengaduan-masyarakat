@@ -37,8 +37,8 @@
                                 <td><?= $r['role']; ?></td>
                                 <td>
                                     <a class="badge badge-warning" href="<?= site_url('admin/roleaccess/'.$r['id']); ?>">Akses</a>
-                                    <a class="badge badge-success" href="<?= site_url('menu/editMenu/'.$r['id']); ?>">Ubah</a>
-                                    <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?= site_url('menu/deleteMenu/'.$r['id']); ?>')">Hapus</a>
+                                    <a class="badge badge-success" href="<?= site_url('admin/editRole/'.$r['id']); ?>">Ubah</a>
+                                    <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?= site_url('admin/deleteRole/'.$r['id']); ?>')">Hapus</a>
                                 </td>
                             </tr>
                         <?php $index++; ?>
@@ -83,7 +83,7 @@
 <!-- modal delete -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content border-left-danger">
+    <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Apa Anda Yakin?</h5>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
