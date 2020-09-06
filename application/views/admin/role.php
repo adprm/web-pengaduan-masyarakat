@@ -11,7 +11,7 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
     <div class="col-lg-7">
-        <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+        <?= form_error('role', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
         <?= $this->session->flashdata('message'); ?>
     </div>
 
@@ -59,13 +59,13 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="newRoleModalLabel">Tambah Akses Baru</h5>
+        <h5 class="modal-title" id="newRoleModalLabel">Tambah Wewenang Baru</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <!-- form -->
-      <form action="<?= site_url('admin/role'); ?>" method="post">
+      <form action="<?= site_url('admin/addRole'); ?>" method="post">
         <div class="modal-body">
             <div class="form-group">
                 <input type="text" class="form-control" id="role" name="role" placeholder="Nama Akses">
