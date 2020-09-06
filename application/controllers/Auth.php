@@ -102,19 +102,114 @@ class Auth extends CI_Controller {
             $this->load->view('auth/registration', $data);
             $this->load->view('templates/auth_footer');
         } else {
+            $email = $this->input->post('email', true);
             $data = [
                 'name' => htmlspecialchars($this->input->post('name', true)),
-                'email' => htmlspecialchars($this->input->post('email', true)),
+                'email' => htmlspecialchars($email),
                 'image' => 'default.jpg',
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'role_id' => 2,
-                'is_active' => 1,
+                'is_active' => 0,
+                'date_created' => time()
+            ];
+
+            // token
+            $token = base64_encode(random_bytes(32));
+            $user_token = [
+                'email' => $email,
+                'token' => $token,
                 'date_created' => time()
             ];
 
             $this->db->insert('user', $data);
+            $this->db->insert('user_token', $user_token);
+
+            $this->_sendEmail($token, 'verify');
+
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Selamat! Akun Anda berhasil di buat. Silahkan login!</div>');
+            Akun Anda berhasil di buat. Silahkan cek email Anda untuk aktivasi akun Anda!</div>');
+            redirect('auth');
+        }
+    }
+
+    // _sendEmail
+    private function _sendEmail($token, $type)
+    {
+        $config = array();
+        $config['protocol']  = 'smtp';
+        $config['smtp_host'] = 'ssl://smtp.gmail.com';
+        $config['smtp_user'] = 'izyadper00@gmail.com';
+        $config['smtp_pass'] = 'nasigoreng05';
+        $config['smtp_port'] = 465;
+        $config['mailtype']  = 'html';
+        $config['charset']   = 'utf-8';
+
+        $this->load->initialize($config);
+        $this->email->initialize($config);
+        $this->email->set_newline("\r\n");
+
+        $this->email->from('izyadper00@gmail.com', 'Web Pengaduan Masyarakat');
+        $this->email->to($this->input->post('email'));
+
+        if ($type == 'verify') {
+            $this->email->subject('Verifikasi Akun');
+            $this->email->message('Klik alamat ini untuk verifikasi akun : <a href="' . base_url() .'auth/verify?email=' . $this->input->post('email') . '&token=' . $token .'">Aktifkan</a>');
+        }
+
+        if ($this->email->send()) {
+            return true; 
+        } else {
+            echo $this->email->print_debugger();
+            die;
+        }
+    }
+
+    // verify
+    public function verify()
+    {
+        $email = $this->input->get('email');
+        $token = $this->input->get('token');
+
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+        if ($user) {
+            // jika email benar
+            $user_token = $this->db->get_where('user_token', ['token' => $token])->row_array();
+
+            if ($user_token) {
+                // jika token benar
+
+                if (time() - $user_token['date_created'] < (60*60*24)) {
+                    // token belum expired
+                    $this->db->set('is_active', 1);
+                    $this->db->where('email', $email);
+                    $this->db->update('user');
+                    $this->db->delete('user_token', ['email' => $email]);
+
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                    '. $email .' Telah teraktivasi! Silahkan login.</div>');
+                    redirect('auth');
+                } else {
+                    // token expired
+                    $this->db->delete('user', ['email' => $email]);
+                    $this->db->delete('user_token', ['email' => $email]);
+
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Gagal aktivasi akun! Token kedaluwarsa.</div>');
+                    redirect('auth');
+                }
+
+            } else {
+                // token salah
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Gagal aktivasi akun! Token tidak valid.</div>');
+                redirect('auth');
+            }
+
+        } else {
+            // email salah
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Gagal aktivasi akun! Email tidak ada.</div>');
             redirect('auth');
         }
     }
