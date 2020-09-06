@@ -50,11 +50,39 @@ class Admin extends CI_Controller {
             $this->load->view('templates/admin_topbar', $data);
             $this->load->view('admin/role');
             $this->load->view('templates/admin_footer');
-            redirect('admin/role');
         } else {
             $this->db->insert('user_role', ['role' => $this->input->post('role')]);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Wewenang baru telah ditambahkan!</div>');
+            redirect('admin/role');
+        }
+    }
+
+    public function editRole($id = null)
+    {
+        $this->form_validation->set_rules('role', 'Wewenang', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Edit Wewenang Akses';
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['role'] = $this->db->get_where('user_role', ['id' => $id])->row_array();
+            
+            $this->load->view('templates/admin_header', $data);
+            $this->load->view('templates/admin_sidebar');
+            $this->load->view('templates/admin_topbar', $data);
+            $this->load->view('admin/edit_role');
+            $this->load->view('templates/admin_footer');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Gagal mengubah nama wewenang!</div>');
+        } else {
+            $data = [
+                'id' => $this->input->post('id'),
+                'role' => $this->input->post('role')
+            ];
+
+            $this->db->update('user_role', $data, ['id' => $id]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Berhasil mengubah nama wewenang!</div>');
             redirect('admin/role');
         }
     }
