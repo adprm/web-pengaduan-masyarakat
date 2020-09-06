@@ -33,5 +33,41 @@ class Admin extends CI_Controller {
         $this->load->view('admin/role');
         $this->load->view('templates/admin_footer');
     }
+    
+    public function roleaccess($role_id)
+    {
+        $data['title'] = 'Wewenang Akses';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['role'] = $this->db->get_where('user_role', ['id' => $role_id])->row_array();
+        $this->db->where('id !=', 1);
+        $data['menu'] = $this->db->get('user_menu')->result_array();
+        
+        $this->load->view('templates/admin_header', $data);
+        $this->load->view('templates/admin_sidebar');
+        $this->load->view('templates/admin_topbar', $data);
+        $this->load->view('admin/role-access');
+        $this->load->view('templates/admin_footer');
+    }
 
+    public function changeaccess()
+    {
+        $menu_id = $this->input->post('menuId');
+        $role_id = $this->input->post('roleId');
+
+        $data = [
+            'role_id' => $role_id,
+            'menu_id' => $menu_id
+        ];
+
+        $result = $this->db->get_where('user_access_menu', $data);
+
+        if ($result->num_rows() < 1) {
+            $this->db->insert('user_access_menu', $data);
+        } else {
+            $this->db->delete('user_access_menu', $data);
+        }
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Akses telah diubah!</div>');
+    }
 }
