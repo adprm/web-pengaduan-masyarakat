@@ -8,6 +8,11 @@ class Report_model extends CI_Model {
         return $this->db->get('user_report')->result_array();
     }
 
+    public function getById($id)
+    {
+        return $this->db->get_where('user_report', ['id' => $id])->row_array();
+    }
+
     public function save()
     {
         $post = $this->input->post();
@@ -29,7 +34,7 @@ class Report_model extends CI_Model {
     private function _uploadFile()
     {
         $config['upload_path']      = './assets/img/report/';
-        $config['allowed_types']    = 'jpg|png|jpeg';
+        $config['allowed_types']    = 'jpg|png|jpeg|pdf|docx';
         $config['file_name']        = $this->id;
         $config['overwrite']        = true;
         $config['max_size']         = '15000';
