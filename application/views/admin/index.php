@@ -34,7 +34,7 @@
                         </div>
                     </div>
                 </div>
-                <small><a class="ml-3" href="#">Lihat &rarr;</a></small>
+                <small><a class="ml-3" href="<?= base_url('admin/datamember'); ?>">Lihat &rarr;</a></small>
             </div>
         </div>
         <div class="col-xl-3 col-md-6 mb-4">
