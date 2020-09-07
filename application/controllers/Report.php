@@ -9,6 +9,19 @@ class Report extends CI_Controller {
         $this->load->model('Report_model');
     }
 
+    public function index()
+    {
+        $data['title'] = 'Data Laporan';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['reports'] = $this->Report_model->getAll();
+            
+        $this->load->view('templates/admin_header', $data);
+        $this->load->view('templates/admin_sidebar');
+        $this->load->view('templates/admin_topbar', $data);
+        $this->load->view('report/index', $data);
+        $this->load->view('templates/admin_footer');
+    }
+
     public function addReport()
     {
         $report = $this->Report_model;
