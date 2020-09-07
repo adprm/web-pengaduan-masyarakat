@@ -49,7 +49,7 @@
                                 <td><?= date('d F Y' , $r['date_reported']); ?></td>
                                 <td>
                                     <a class="badge badge-success" href="<?= site_url('report/detail/'.$r['id']); ?>">Detail</a>
-                                    <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?= site_url('menu/deleteReport/'.$r['id']); ?>')">Hapus</a>
+                                    <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?= site_url('report/deleteReport/'.$r['id']); ?>')">Hapus</a>
                                 </td>
                             </tr>
                         <?php $index++; ?>
