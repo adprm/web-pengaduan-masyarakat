@@ -162,7 +162,7 @@ class Admin extends CI_Controller {
     }
 
     // info detail member
-    public function detailmember($id = null)
+    public function detailmember($id)
     {
         $data['title'] = 'Info Data Pengguna';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
@@ -173,6 +173,15 @@ class Admin extends CI_Controller {
         $this->load->view('templates/admin_topbar', $data);
         $this->load->view('admin/detail_member', $data);
         $this->load->view('templates/admin_footer');
+    }
+
+    // delete member
+    public function deletemember($id)
+    {
+        $this->db->delete('user', ['id' => $id]);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Pengguna berhasil dihapus!</div>');
+        redirect('admin/datamember');
     }
 
 }
