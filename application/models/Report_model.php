@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Report_model extends CI_Model {
 
+    public function getAll()
+    {
+        return $this->db->get('user_report')->result_array();
+    }
+
     public function save()
     {
         $post = $this->input->post();
