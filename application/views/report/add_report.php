@@ -4,7 +4,7 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
-    <div class="card shadow border-left-primary mb-3">
+    <div class="card shadow mb-3">
         <div class="card-header">
         	From Laporkan
         </div>
@@ -64,12 +64,13 @@
                         <option value="Corona Virus">Corona Virus</option>
                         <option value="Kesehatan">Kesehatan</option>
                         <option value="Bantuan Pangan">Bantuan Pangan</option>
-                        <option value="Bidang Perekonomian">Bidang Perekonomian</option>
-                        <option value="Energi dan Sumber Daya Alam">Energi dan Sumber Daya Alam</option>
+                        <option value="Perekonomian">Perekonomian</option>
                         <option value="Pendidikan">Pendidikan</option>
                         <option value="Pertanian">Pertanian</option>
+                        <option value="Narkoba">Narkoba</option>
                         <option value="Tindak Kriminal">Tindak Kriminal</option>
                         <option value="Pelecehan Seksual">Pelecehan Seksual</option>
+                        <option value="Bencana Alam">Bencana Alama</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -86,7 +87,7 @@
         </div>
 
         <div class="card-footer small text-muted">
-            * required fields
+            * harus diisi
         </div>
 	</div>
 
