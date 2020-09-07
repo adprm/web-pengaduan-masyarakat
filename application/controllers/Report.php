@@ -25,10 +25,7 @@ class Report extends CI_Controller {
     public function addReport()
     {
         $report = $this->Report_model;
-
-        $this->form_validation->set_rules('name', 'Nama', 'required', [
-            'required' => 'Nama harus diisi!'
-        ]);
+        
         $this->form_validation->set_rules('nik', 'NIK', 'required', [
             'required' => 'NIK harus diisi!'
         ]);
@@ -61,8 +58,23 @@ class Report extends CI_Controller {
             Gagal melaporkan!</div>');
         } else {
             $report->save();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Berhasil dilaporkan!</div>');
             redirect('user');
         }
+    }
+
+    public function detail($id)
+    {
+        $data['title'] = 'Info Detail Laporan';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['report'] = $this->Report_model->getById($id);
+            
+        $this->load->view('templates/admin_header', $data);
+        $this->load->view('templates/admin_sidebar');
+        $this->load->view('templates/admin_topbar', $data);
+        $this->load->view('report/detail', $data);
+        $this->load->view('templates/admin_footer');
     }
 
 }
