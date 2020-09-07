@@ -13,9 +13,7 @@
         	<form action="<?php echo site_url('report/addReport') ?>" method="post" enctype="multipart/form-data" >
                 <div class="form-group">
                     <label for="title">Nama Pelapor*</label>
-                    <input class="form-control"
-                    type="text" name="name" placeholder="Masukkan nama" value="<?= set_value('name'); ?>">
-                    <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <input class="form-control" type="text" name="name" value="<?= $user['name']; ?>" readonly>
                 </div>
                 <div class="form-group">
                     <label for="nik">NIK Pelapor*</label>
