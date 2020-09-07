@@ -6,9 +6,11 @@ class Menu extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        // user access
         is_logged_in();
     }
 
+    // index view menu
     public function index()
     {
         $data['title'] = 'Menu Manajemen';
@@ -22,6 +24,7 @@ class Menu extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
+    // add menu
     public function addMenu()
     {
         $data['title'] = 'Menu Manajemen';
@@ -46,6 +49,7 @@ class Menu extends CI_Controller {
         }
     }
 
+    // edit menu
     public function editMenu($id = null)
     {   
         $this->form_validation->set_rules('menu', 'Menu', 'required', [
@@ -77,6 +81,7 @@ class Menu extends CI_Controller {
         }
     }
 
+    // delete menu
     public function deleteMenu($id = null)
     {
         $this->db->delete('user_menu', ['id' => $id]);
@@ -85,6 +90,7 @@ class Menu extends CI_Controller {
         redirect('menu');
     }
 
+    // index view sub menu
     public function submenu()
     {
         $data['title'] = 'Submenu Manajemen';
@@ -100,6 +106,7 @@ class Menu extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
+    // add sub menu
     public function addSubMenu()
     {
         $data['title'] = 'Submenu Manajemen';
@@ -143,6 +150,7 @@ class Menu extends CI_Controller {
         }
     }
 
+    // edit sub menu
     public function editSubMenu($id = null)
     {
         $this->form_validation->set_rules('title', 'Submenu', 'required', [
@@ -190,6 +198,7 @@ class Menu extends CI_Controller {
         }
     }
 
+    // delete sub menu
     public function deleteSubMenu($id = null)
     {
         $this->db->delete('user_sub_menu', ['id' => $id]);

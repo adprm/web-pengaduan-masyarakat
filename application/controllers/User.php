@@ -6,9 +6,11 @@ class User extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        // user access
         is_logged_in();
     }
 
+    // index view user info
     public function index()
     {
         $data['title'] = 'Profil Saya';
@@ -75,6 +77,7 @@ class User extends CI_Controller {
         
     }
 
+    // change password user
     public function changepassword()
     {
         $data['title'] = 'Ubah Kata Sandi';

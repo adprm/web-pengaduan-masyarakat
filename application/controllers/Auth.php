@@ -234,6 +234,7 @@ class Auth extends CI_Controller {
         $this->load->view('auth/blocked');
     }
 
+    // forgot password
     public function forgotPassword()
     {
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [

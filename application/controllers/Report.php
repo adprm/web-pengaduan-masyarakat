@@ -6,9 +6,11 @@ class Report extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        // load model
         $this->load->model('Report_model');
     }
 
+    // index view report
     public function index()
     {
         $data['title'] = 'Data Laporan';
@@ -22,6 +24,7 @@ class Report extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
+    // add report
     public function addReport()
     {
         $report = $this->Report_model;
@@ -64,6 +67,7 @@ class Report extends CI_Controller {
         }
     }
 
+    // view detail report
     public function detail($id)
     {
         $data['title'] = 'Info Detail Laporan';
@@ -77,6 +81,7 @@ class Report extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
+    // delete report
     public function deleteReport($id = null)
     {
         if (!isset($id)) show_404();

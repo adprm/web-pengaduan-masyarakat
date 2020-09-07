@@ -6,9 +6,11 @@ class Admin extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        // user access
         is_logged_in();
     }
 
+    // function index view
     public function index()
     {
         $data = [
@@ -28,6 +30,7 @@ class Admin extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
+    // function role
     public function role()
     {
         $data['title'] = 'Wewenang Akses';
@@ -41,6 +44,7 @@ class Admin extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
+    // function add role
     public function addRole()
     {
         $this->form_validation->set_rules('role', 'Wewenang', 'required', [
@@ -65,6 +69,7 @@ class Admin extends CI_Controller {
         }
     }
 
+    // function edit role
     public function editRole($id = null)
     {
         $this->form_validation->set_rules('role', 'Wewenang', 'required');
@@ -94,6 +99,7 @@ class Admin extends CI_Controller {
         }
     }
 
+    // function delete role
     public function deleteRole($id = null)
     {
         $this->db->delete('user_role', ['id' => $id]);
@@ -102,6 +108,7 @@ class Admin extends CI_Controller {
         redirect('admin/role');
     }
     
+    // function role access
     public function roleaccess($role_id)
     {
         $data['title'] = 'Wewenang Akses';
@@ -117,6 +124,7 @@ class Admin extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
+    // change access
     public function changeaccess()
     {
         $menu_id = $this->input->post('menuId');
