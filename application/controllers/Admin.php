@@ -146,4 +146,19 @@ class Admin extends CI_Controller {
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
         Akses telah diubah!</div>');
     }
+
+    // data member info
+    public function datamember()
+    {
+        $data['title'] = 'Data Pengguna';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user_member'] = $this->db->get_where('user', ['role_id' => 2])->result_array();
+
+        $this->load->view('templates/admin_header', $data);
+        $this->load->view('templates/admin_sidebar');
+        $this->load->view('templates/admin_topbar', $data);
+        $this->load->view('admin/data_member');
+        $this->load->view('templates/admin_footer');
+    }
+
 }
