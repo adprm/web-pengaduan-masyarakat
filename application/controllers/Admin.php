@@ -157,7 +157,21 @@ class Admin extends CI_Controller {
         $this->load->view('templates/admin_header', $data);
         $this->load->view('templates/admin_sidebar');
         $this->load->view('templates/admin_topbar', $data);
-        $this->load->view('admin/data_member');
+        $this->load->view('admin/data_member', $data);
+        $this->load->view('templates/admin_footer');
+    }
+
+    // info detail member
+    public function detailmember($id = null)
+    {
+        $data['title'] = 'Info Data Pengguna';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['member'] = $this->db->get_where('user', ['id' => $id])->row_array();
+
+        $this->load->view('templates/admin_header', $data);
+        $this->load->view('templates/admin_sidebar');
+        $this->load->view('templates/admin_topbar', $data);
+        $this->load->view('admin/detail_member', $data);
         $this->load->view('templates/admin_footer');
     }
 
