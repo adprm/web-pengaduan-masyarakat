@@ -8,7 +8,7 @@
             </div>
             <div class="col-lg-8 align-self-baseline">
                 <p class="text-white-75 font-weight-light mb-5">Laporkan setiap kejadian yang meresahkan dan yang dapat merugikan lingkungan demi lingkungan yang lebih baik.</p>
-                <a class="btn btn-info btn-xl js-scroll-trigger" href="<?= site_url('auth'); ?>">Masuk <i class="fas fa-sign-in-alt"></i></a>
+                <a class="btn btn-info btn-xl js-scroll-trigger" href="<?= site_url('auth'); ?>">Masuk Untuk Melaporkan <i class="fas fa-sign-in-alt"></i></a>
             </div>
         </div>
     </div>
