@@ -120,7 +120,7 @@ class Admin extends CI_Controller {
         $this->load->view('templates/admin_header', $data);
         $this->load->view('templates/admin_sidebar');
         $this->load->view('templates/admin_topbar', $data);
-        $this->load->view('admin/role-access');
+        $this->load->view('admin/role_access');
         $this->load->view('templates/admin_footer');
     }
 

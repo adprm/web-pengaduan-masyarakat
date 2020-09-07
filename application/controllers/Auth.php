@@ -245,7 +245,7 @@ class Auth extends CI_Controller {
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Lupa Kata Sandi';
             $this->load->view('templates/auth_header', $data);
-            $this->load->view('auth/forgot-password', $data);
+            $this->load->view('auth/forgot_password', $data);
             $this->load->view('templates/auth_footer');
         } else {
             $email = $this->input->post('email');
@@ -326,7 +326,7 @@ class Auth extends CI_Controller {
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Ubah Kata Sandi';
             $this->load->view('templates/auth_header', $data);
-            $this->load->view('auth/change-password', $data);
+            $this->load->view('auth/change_password', $data);
             $this->load->view('templates/auth_footer');
         } else {
             $password = password_hash($this->input->post('password1'), PASSWORD_DEFAULT);
