@@ -31,6 +31,12 @@ class Report_model extends CI_Model {
         return $this->db->insert('user_report', $this);
     }
 
+    public function delete($id)
+    {
+        $this->_deleteFile($id);
+        return $this->db->delete('user_report', ['id' => $id]);
+    }
+
     private function _uploadFile()
     {
         $config['upload_path']      = './assets/img/report/';
@@ -46,6 +52,16 @@ class Report_model extends CI_Model {
         }
 
         return "default.jpg";
+    }
+
+    private function _deleteFile($id)
+    {
+        $report = $this->getById($id);
+
+        if ($report['file'] != 'default.jpg') {
+            $file_name = explode(".", $report['file'])[0];
+            return array_map('unlink', glob(FCPATH . "assets/img/report/$file_name.*"));
+        }
     }
 
 }
