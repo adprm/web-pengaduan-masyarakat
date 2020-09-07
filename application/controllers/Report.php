@@ -77,4 +77,14 @@ class Report extends CI_Controller {
         $this->load->view('templates/admin_footer');
     }
 
+    public function deleteReport($id = null)
+    {
+        if (!isset($id)) show_404();
+
+        $report = $this->Report_model;
+        if ($report->delete($id)) {
+            redirect('report');
+        }
+    }
+
 }
