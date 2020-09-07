@@ -21,4 +21,21 @@ class Report_model extends CI_Model {
         return $this->db->insert('user_report', $this);
     }
 
+    private function _uploadFile()
+    {
+        $config['upload_path']      = './assets/img/report/';
+        $config['allowed_types']    = 'jpg|png|jpeg';
+        $config['file_name']        = $this->id;
+        $config['overwrite']        = true;
+        $config['max_size']         = '15000';
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('file')) {
+            return $this->upload->data('file_name');
+        }
+
+        return "default.jpg";
+    }
+
 }
