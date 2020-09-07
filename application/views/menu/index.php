@@ -36,8 +36,8 @@
                                 <td><?= $index; ?></td>
                                 <td><?= $m['menu']; ?></td>
                                 <td>
-                                    <a class="badge badge-success" href="<?= site_url('menu/editMenu/'.$m['id']); ?>">Ubah</a>
-                                    <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?= site_url('menu/deleteMenu/'.$m['id']); ?>')">Hapus</a>
+                                    <a class="badge badge-success" href="<?= site_url('menu/editmenu/'.$m['id']); ?>">Ubah</a>
+                                    <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?= site_url('menu/deletemenu/'.$m['id']); ?>')">Hapus</a>
                                 </td>
                             </tr>
                         <?php $index++; ?>
@@ -64,7 +64,7 @@
         </button>
       </div>
       <!-- form -->
-      <form action="<?= site_url('menu/addMenu'); ?>" method="post">
+      <form action="<?= site_url('menu/addmenu'); ?>" method="post">
         <div class="modal-body">
             <div class="form-group">
                 <input type="text" class="form-control" id="menu" name="menu" placeholder="Nama menu">

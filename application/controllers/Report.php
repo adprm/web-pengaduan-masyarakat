@@ -25,7 +25,7 @@ class Report extends CI_Controller {
     }
 
     // add report
-    public function addReport()
+    public function addreport()
     {
         $report = $this->Report_model;
         
@@ -82,7 +82,7 @@ class Report extends CI_Controller {
     }
 
     // delete report
-    public function deleteReport($id = null)
+    public function deletereport($id = null)
     {
         if (!isset($id)) show_404();
 

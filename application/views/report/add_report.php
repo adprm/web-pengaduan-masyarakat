@@ -10,7 +10,7 @@
         </div>
 
         <div class="card-body">
-        	<form action="<?php echo site_url('report/addReport') ?>" method="post" enctype="multipart/form-data" >
+        	<form action="<?php echo site_url('report/addreport') ?>" method="post" enctype="multipart/form-data" >
                 <div class="form-group">
                     <label for="title">Nama Pelapor*</label>
                     <input class="form-control" type="text" name="name" value="<?= $user['name']; ?>" readonly>

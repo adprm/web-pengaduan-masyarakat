@@ -48,8 +48,8 @@
                                 <td><?= $sm['icon']; ?></td>
                                 <td><?= $sm['is_active']; ?></td>
                                 <td>
-                                    <a class="badge badge-success" href="<?= site_url('menu/editSubMenu/'.$sm['id']); ?>">Ubah</a>
-                                    <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?= site_url('menu/deleteSubMenu/'.$sm['id']); ?>')">Hapus</a>
+                                    <a class="badge badge-success" href="<?= site_url('menu/editsubmenu/'.$sm['id']); ?>">Ubah</a>
+                                    <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?= site_url('menu/deletesubmenu/'.$sm['id']); ?>')">Hapus</a>
                                 </td>
                             </tr>
                         <?php $index++; ?>
@@ -76,7 +76,7 @@
         </button>
       </div>
       <!-- form -->
-      <form action="<?= site_url('menu/addSubMenu'); ?>" method="post">
+      <form action="<?= site_url('menu/addsubmenu'); ?>" method="post">
         <div class="modal-body">
             <div class="form-group">
                 <input type="text" class="form-control" id="title" name="title" placeholder="Judul Submenu">

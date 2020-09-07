@@ -37,8 +37,8 @@
                                 <td><?= $r['role']; ?></td>
                                 <td>
                                     <a class="badge badge-warning" href="<?= site_url('admin/roleaccess/'.$r['id']); ?>">Akses</a>
-                                    <a class="badge badge-success" href="<?= site_url('admin/editRole/'.$r['id']); ?>">Ubah</a>
-                                    <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?= site_url('admin/deleteRole/'.$r['id']); ?>')">Hapus</a>
+                                    <a class="badge badge-success" href="<?= site_url('admin/editrole/'.$r['id']); ?>">Ubah</a>
+                                    <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?= site_url('admin/deleterole/'.$r['id']); ?>')">Hapus</a>
                                 </td>
                             </tr>
                         <?php $index++; ?>
@@ -65,7 +65,7 @@
         </button>
       </div>
       <!-- form -->
-      <form action="<?= site_url('admin/addRole'); ?>" method="post">
+      <form action="<?= site_url('admin/addrole'); ?>" method="post">
         <div class="modal-body">
             <div class="form-group">
                 <input type="text" class="form-control" id="role" name="role" placeholder="Nama Akses">

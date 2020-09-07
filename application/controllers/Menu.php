@@ -25,7 +25,7 @@ class Menu extends CI_Controller {
     }
 
     // add menu
-    public function addMenu()
+    public function addmenu()
     {
         $data['title'] = 'Menu Manajemen';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
@@ -50,7 +50,7 @@ class Menu extends CI_Controller {
     }
 
     // edit menu
-    public function editMenu($id = null)
+    public function editmenu($id = null)
     {   
         $this->form_validation->set_rules('menu', 'Menu', 'required', [
             'required' => 'Nama menu tidak boleh kosong!'
@@ -82,7 +82,7 @@ class Menu extends CI_Controller {
     }
 
     // delete menu
-    public function deleteMenu($id = null)
+    public function deletemenu($id = null)
     {
         $this->db->delete('user_menu', ['id' => $id]);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
@@ -107,7 +107,7 @@ class Menu extends CI_Controller {
     }
 
     // add sub menu
-    public function addSubMenu()
+    public function addsubmenu()
     {
         $data['title'] = 'Submenu Manajemen';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
@@ -151,7 +151,7 @@ class Menu extends CI_Controller {
     }
 
     // edit sub menu
-    public function editSubMenu($id = null)
+    public function editsubmenu($id = null)
     {
         $this->form_validation->set_rules('title', 'Submenu', 'required', [
             'required' => 'Submenu tidak boleh kosong!'
@@ -199,7 +199,7 @@ class Menu extends CI_Controller {
     }
 
     // delete sub menu
-    public function deleteSubMenu($id = null)
+    public function deletesubmenu($id = null)
     {
         $this->db->delete('user_sub_menu', ['id' => $id]);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">

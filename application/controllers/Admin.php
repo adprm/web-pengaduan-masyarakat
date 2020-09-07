@@ -45,7 +45,7 @@ class Admin extends CI_Controller {
     }
 
     // function add role
-    public function addRole()
+    public function addrole()
     {
         $this->form_validation->set_rules('role', 'Wewenang', 'required', [
             'required' => 'Nama wewenang tidak boleh kosong!'
@@ -70,7 +70,7 @@ class Admin extends CI_Controller {
     }
 
     // function edit role
-    public function editRole($id = null)
+    public function editrole($id = null)
     {
         $this->form_validation->set_rules('role', 'Wewenang', 'required');
 
@@ -100,11 +100,11 @@ class Admin extends CI_Controller {
     }
 
     // function delete role
-    public function deleteRole($id = null)
+    public function deleterole($id = null)
     {
         $this->db->delete('user_role', ['id' => $id]);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Wewenaang berhasil dihapus!</div>');
+        Wewenang berhasil dihapus!</div>');
         redirect('admin/role');
     }
     

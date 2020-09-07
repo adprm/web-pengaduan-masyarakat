@@ -36,7 +36,7 @@
                     </form>
                     <hr>
                     <div class="text-center">
-                      <a class="small" href="<?= base_url('auth/forgotPassword'); ?>">Lupa kata sandi?</a>
+                      <a class="small" href="<?= base_url('auth/forgotpassword'); ?>">Lupa kata sandi?</a>
                     </div>
                     <div class="text-center">
                       <a class="small" href="<?= site_url('auth'); ?>">Sudah memiliki akun? Masuk!</a>
