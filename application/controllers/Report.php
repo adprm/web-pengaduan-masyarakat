@@ -15,6 +15,7 @@ class Report extends CI_Controller {
     {
         $data['title'] = 'Data Laporan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['reports'] = $this->db->order_by('date_reported', 'DESC');
         $data['reports'] = $this->Report_model->getAll();
             
         $this->load->view('templates/admin_header', $data);
