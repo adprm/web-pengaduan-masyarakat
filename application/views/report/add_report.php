@@ -70,7 +70,7 @@
                         <option value="Narkoba">Narkoba</option>
                         <option value="Tindak Kriminal">Tindak Kriminal</option>
                         <option value="Pelecehan Seksual">Pelecehan Seksual</option>
-                        <option value="Bencana Alam">Bencana Alama</option>
+                        <option value="Bencana Alam">Bencana Alam</option>
                     </select>
                 </div>
                 <div class="form-group">
