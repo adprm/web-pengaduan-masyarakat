@@ -184,4 +184,34 @@ class Admin extends CI_Controller {
         redirect('admin/datamember');
     }
 
+    // edit member
+    public function editmember($id)
+    {
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Ubah Data Pengguna';
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['member'] = $this->db->get_where('user', ['id' => $id])->row_array();
+            $this->load->view('templates/admin_header', $data);
+            $this->load->view('templates/admin_sidebar');
+            $this->load->view('templates/admin_topbar', $data);
+            $this->load->view('admin/edit_member', $data);
+            $this->load->view('templates/admin_footer');
+        } else {
+            $data = [
+                'id' => $this->input->post('id'),
+                'name' => $this->input->post('name'),
+                'email' => $this->input->post('email'),
+                'role_id' => $this->input->post('role_id'),
+                'is_active' => $this->input->post('is_active')
+            ];
+                
+            $this->db->update('user', $data, ['id' => $data['id']]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Data pengguna berhasil diuabh!</div>');
+            redirect('admin/datamember');
+        }
+    }
+
 }
