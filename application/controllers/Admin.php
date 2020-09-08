@@ -209,7 +209,7 @@ class Admin extends CI_Controller {
                 
             $this->db->update('user', $data, ['id' => $data['id']]);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Data pengguna berhasil diuabh!</div>');
+            Data pengguna berhasil diubah!</div>');
             redirect('admin/datamember');
         }
     }
