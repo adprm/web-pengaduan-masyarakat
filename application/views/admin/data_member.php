@@ -31,7 +31,7 @@
                                     <th>#</th>
                                     <th>Nama</th>
                                     <th>Email</th>
-                                    <th>Waktu Bergabung</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                         </thead>
@@ -42,9 +42,17 @@
                                 <td><?= $index; ?></td>
                                 <td><?= $um['name']; ?></td>
                                 <td><?= $um['email']; ?></td>
-                                <td><?= date('d F Y' , $um['date_created']); ?></td>
                                 <td>
-                                    <a class="badge badge-success" href="<?= site_url('admin/detailmember/'.$um['id']); ?>">Detail</a>
+                                    <?php if ($um['is_active'] == 1) {
+                                        echo 'Aktif';
+                                    } else {
+                                        echo 'Tidak Aktif';
+                                    } 
+                                    ?>
+                                </td>
+                                <td>
+                                    <a class="badge badge-warning" href="<?= site_url('admin/detailmember/'.$um['id']); ?>">Detail</a>
+                                    <a class="badge badge-success" href="<?= site_url('admin/editmember/'.$um['id']); ?>">Ubah</a>
                                     <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?= site_url('admin/deletemember/'.$um['id']); ?>')">Hapus</a>
                                 </td>
                             </tr>
