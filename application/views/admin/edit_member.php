@@ -15,7 +15,9 @@
         <div class="card-body">
             <form action="" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="<?= $member['id']; ?>" />
-                    <!-- edit title -->
+                	<div class="form-group">
+                		<img class="card-img" style="width: 10rem;" src="<?= base_url('assets/img/profile/'.$member['image']); ?>" alt="">
+                	</div>
                 	<div class="form-group">
                 		<label for="name">Nama Pengguna</label>
                 		<input class="form-control" type="text" name="name" value="<?= $member['name'] ?>" readonly/>
