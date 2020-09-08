@@ -68,7 +68,7 @@
       <form action="<?= site_url('admin/addrole'); ?>" method="post">
         <div class="modal-body">
             <div class="form-group">
-                <input type="text" class="form-control" id="role" name="role" placeholder="Nama Akses">
+                <input type="text" class="form-control" id="role" name="role" placeholder="Nama Wewenang">
             </div>
         </div>
         <div class="modal-footer">

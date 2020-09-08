@@ -42,7 +42,7 @@
                                 <td><?= $r['type']; ?></td>
                                 <td><?= date('d F Y' , $r['date_reported']); ?></td>
                                 <td>
-                                    <a class="badge badge-success" href="<?= site_url('report/detail/'.$r['id']); ?>">Detail</a>
+                                    <a class="badge badge-info" href="<?= site_url('report/detail/'.$r['id']); ?>">Detail</a>
                                     <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?= site_url('report/deletereport/'.$r['id']); ?>')">Hapus</a>
                                 </td>
                             </tr>
