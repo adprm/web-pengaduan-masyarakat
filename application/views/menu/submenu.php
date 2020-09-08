@@ -33,7 +33,7 @@
                                     <th>Menu</th>
                                     <th>url</th>
                                     <th>Ikon</th>
-                                    <th>Aktif</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                         </thead>
@@ -46,7 +46,15 @@
                                 <td><?= $sm['menu']; ?></td>
                                 <td><?= $sm['url']; ?></td>
                                 <td><?= $sm['icon']; ?></td>
-                                <td><?= $sm['is_active']; ?></td>
+                                <td>
+                                <?php
+                                  if ($sm['is_active'] == 1) {
+                                    echo 'Aktif';
+                                  } else {
+                                    echo 'Tidak Aktif';
+                                  }
+                                ?>
+                                </td>
                                 <td>
                                     <a class="badge badge-success" href="<?= site_url('menu/editsubmenu/'.$sm['id']); ?>">Ubah</a>
                                     <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?= site_url('menu/deletesubmenu/'.$sm['id']); ?>')">Hapus</a>
