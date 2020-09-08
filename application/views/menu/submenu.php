@@ -47,13 +47,13 @@
                                 <td><?= $sm['url']; ?></td>
                                 <td><?= $sm['icon']; ?></td>
                                 <td>
-                                <?php
-                                  if ($sm['is_active'] == 1) {
-                                    echo 'Aktif';
-                                  } else {
-                                    echo 'Tidak Aktif';
-                                  }
-                                ?>
+                                  <?php
+                                    if ($sm['is_active'] == 1) {
+                                      echo 'Aktif';
+                                    } else {
+                                      echo 'Tidak Aktif';
+                                    }
+                                  ?>
                                 </td>
                                 <td>
                                     <a class="badge badge-success" href="<?= site_url('menu/editsubmenu/'.$sm['id']); ?>">Ubah</a>
