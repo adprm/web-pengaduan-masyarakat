@@ -132,4 +132,15 @@ class User extends CI_Controller {
         }
     }
 
+    // delete akun
+    public function deleteuser($id)
+    {
+        $this->db->delete('user', ['id' => $id]);
+        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('role_id');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Akun berhasil dihapus!</div>');
+        redirect('auth');
+    }
+
 }
