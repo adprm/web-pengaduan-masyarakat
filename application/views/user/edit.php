@@ -1,3 +1,10 @@
+<script>
+    function deleteConfirm(url){
+        $('#btn-delete').attr('href', url);
+        $('#deleteModal').modal();
+    }
+</script>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -46,6 +53,7 @@
                         </div>
                     </div>
                 </form>
+                <a class="badge badge-danger" href="#!" onclick="deleteConfirm('<?= site_url('user/deleteuser/'.$user['id']); ?>')">Hapus Akun</a>
             </div>
         </div>
     </div>
@@ -56,3 +64,22 @@
 
 </div>
 <!-- End of Main Content -->
+
+<!-- modal delete -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Apa Anda Yakin?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Akun yang sudah dihapus tidak dapat dikembalikan!</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+        <a id="btn-delete" class="btn btn-danger" href="#">Hapus</a>
+      </div>
+    </div>
+  </div>
+</div>
