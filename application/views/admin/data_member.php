@@ -11,12 +11,6 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
-    <?php if (validation_errors()) : ?>
-    <div class="alert alert-danger" role="alert">
-        <?= validation_errors(); ?>
-    </div>
-    <?php endif; ?>
-
     <?= $this->session->flashdata('message'); ?>
 
     <div class="card shadow mb-4">
