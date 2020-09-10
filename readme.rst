@@ -1,4 +1,36 @@
 ###################
+Web Pengaduan Masyarakat
+###################
+A web-based public complaint application developed using Codeigniter.
+
+*******************
+Features
+******************* 
+Web Features : 
+
+- Register a login account by email
+- User activation
+- Forgot password
+- Delete account
+
+Admin Features :
+
+- User member management
+- User access level
+- Menu management
+- Report data management
+
+User Features : 
+
+- Add report
+
+*******************
+How to use
+******************* 
+- Create a database with the name web_penguhan_masyrakat
+- Import web_penguhan_masyrakat.sql db into the database
+
+###################
 What is CodeIgniter
 ###################
 
